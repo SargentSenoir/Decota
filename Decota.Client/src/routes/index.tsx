@@ -3,7 +3,7 @@ import { MAIN_PATH } from "src/constant";
 
 import MainLayout from "src/layouts/MainLayout";
 
-const router = createBrowserRouter([
+const privateRouter = createBrowserRouter([
   {
     path: "/",
     element: <MainLayout />,
@@ -33,4 +33,20 @@ const router = createBrowserRouter([
   },
 ]);
 
-export default router;
+const publicRouter = createBrowserRouter([
+  {
+    path: "/",
+    element: <MainLayout />,
+    children: [
+      {
+        path: MAIN_PATH.login,
+        lazy: () => import("src/pages/Login"),
+      },
+    ],
+  },
+]);
+
+export {
+  publicRouter,
+  privateRouter
+};

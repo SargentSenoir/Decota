@@ -11,6 +11,11 @@ const userSchema = mongoose.Schema(
       required: true,
       trim: true,
     },
+    userName: {
+      type: String,
+      required: true,
+      trim: true,
+    },
     email: {
       type: String,
       required: true,
@@ -35,10 +40,23 @@ const userSchema = mongoose.Schema(
       },
       private: true, // used by the toJSON plugin
     },
+    lastLogin: {
+      type: Date,
+      default: Date.now()
+    },
+    dob: {
+      type: Date,
+      validate: {
+        validator: (date) => date.getHours() === 0 && 
+        date.getMinutes() === 0 && 
+        date.getSeconds() === 0 && 
+        date.getMilliseconds() === 0,
+        message: 'Birthdate should not include a time component.',
+      },
+    },
     role: {
-      type: String,
-      enum: roles,
-      default: 'user',
+      type: mongoose.Schema.Types.ObjectId,
+      ref: 'UserRole',
     },
     isEmailVerified: {
       type: Boolean,

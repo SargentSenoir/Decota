@@ -5,6 +5,8 @@ export const TMDB_V3_API_KEY = import.meta.env.VITE_APP_TMDB_V3_API_KEY;
 
 export const MAIN_PATH = {
   root: "",
+  signup: "signup",
+  login: "login",
   browse: "browse",
   genreExplore: "genre",
   watch: "watch",

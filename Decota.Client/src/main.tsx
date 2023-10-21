@@ -10,7 +10,7 @@ import { createTheme, ThemeProvider } from "@mui/material/styles";
 import store from "./store";
 import { extendedApi } from "./store/slices/configuration";
 import palette from "./theme/palette";
-import router from "./routes";
+import { publicRouter } from "./routes";
 import MainLoadingScreen from "./components/MainLoadingScreen";
 
 store.dispatch(extendedApi.endpoints.getConfiguration.initiate(undefined));
@@ -23,7 +23,7 @@ root.render(
     <React.StrictMode>
       <ThemeProvider theme={createTheme({ palette })}>
         <RouterProvider
-          router={router}
+          router={publicRouter}
           fallbackElement={<MainLoadingScreen />}
         />
       </ThemeProvider>
