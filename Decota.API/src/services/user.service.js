@@ -1,6 +1,7 @@
 const httpStatus = require('http-status');
-const { User } = require('../models');
+const { User, Role } = require('../models');
 const ApiError = require('../utils/ApiError');
+const Roles = require('../models/roles.model');
 
 /**
  * Create a user
@@ -11,6 +12,9 @@ const createUser = async (userBody) => {
   if (await User.isEmailTaken(userBody.email)) {
     throw new ApiError(httpStatus.BAD_REQUEST, 'Email already taken');
   }
+  let defaultrole = await Roles.findDefaultRole()
+  if(defaultrole) userBody.role = defaultrole.id;
+  else throw new Error('')
   return User.create(userBody);
 };
 

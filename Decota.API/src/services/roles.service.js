@@ -8,7 +8,7 @@ const { RecordStatusEnum } = require('../utils/constants');
  * @param {Object} roleBody
  * @returns {Promise<Role>}
  */
-const createRole = async (roleBody) => Role.create(roleBody)
+const createRole = async (roleBody) => await Role.create(roleBody)
 
 /**
  * Query for roles

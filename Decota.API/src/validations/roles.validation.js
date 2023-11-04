@@ -5,6 +5,7 @@ const createRole = {
   body: Joi.object().keys({
     name: Joi.string().required(),
     descriotion: Joi.string(),
+    isDefault: Joi.boolean(),
     Permissions: Joi.array().items(Joi.object().keys({
         name: Joi.string(),
         description: Joi.string()

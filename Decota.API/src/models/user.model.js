@@ -56,7 +56,7 @@ const userSchema = mongoose.Schema(
     },
     role: {
       type: mongoose.Schema.Types.ObjectId,
-      ref: 'UserRole',
+      ref: 'Roles',
     },
     isEmailVerified: {
       type: Boolean,

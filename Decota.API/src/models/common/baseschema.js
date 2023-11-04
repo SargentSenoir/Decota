@@ -7,6 +7,14 @@ const baseSchema = new mongoose.Schema({
     enum: recordStatusList,
     default: 'active',
   },
+
+  //unique id to reference that related organisation
+  organisationId: {
+    type: mongoose.Schema.Types.ObjectId,
+    ref: 'Organisations',
+    unique: true,
+    required: true
+  }
   // Add other common fields here
 },
 {
